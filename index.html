@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Post Carousel</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            font-family: Arial, sans-serif;
+        }
+
+        .bg-img {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background: url('http://unsplash.it/1200x800') center center no-repeat;
+            background-size: cover;
+        }
+
+        .bg-img:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-image: linear-gradient(to bottom right,#0038A8 10%,#fd3838 80%);
+            opacity: .6;
+        }
+
+        .container {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 50px 20px;
+            z-index: 1;
+        }
+
+        h1 {
+            color: white;
+            text-align: center;
+            margin-bottom: 40px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        h2 {
+            color: white;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 20px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+        .carousel {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .slide {
+            min-width: 100%;
+            padding: 30px;
+        }
+
+        .blog-post {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .blog-post h2 {
+            color: #333;
+            font-size: 24px;
+        }
+
+        .blog-post .date {
+            color: #666;
+            font-style: italic;
+        }
+
+        .blog-post p {
+            color: #444;
+            line-height: 1.6;
+        }
+
+        .read-more {
+            display: inline-block;
+            background-color: #fe8a39;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 5px;
+            text-decoration: none;
+            align-self: flex-start;
+            transition: background-color 0.3s;
+        }
+
+        .read-more:hover {
+            background-color: #fd3838;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            gap: 15px;
+        }
+
+        .nav-btn {
+            background-color: rgba(255, 255, 255, 0.8);
+            color: #333;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-btn:hover {
+            background-color: white;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .indicators {
+            display: flex;
+            justify-content: center;
+            margin-top: 15px;
+            gap: 10px;
+        }
+
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .indicator.active {
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-img">
+        <div class="container">
+            <h1>What It's Like Being A Filipino Immigrant</h1>
+            <h2>Jose Velasco and Jas Leal</h2>
+            
+            <div class="carousel">
+                <div class="slides">
+                    <!-- Blog Post 1 -->
+                    <div class="slide">
+                        <div class="blog-post">
+                            <h2>Finding Troubles in Filipino Identity</h2>
+                            <span class="date">April 21, 2025</span>
+                            <p>This feeling of disconnect is deeply rooted in complex historical, social, and personal factors that have shaped the experiences of us Filipinos.</p>
+                            <a href="#" class="read-more">Read More</a>
+                        </div>
+                    </div>
+                    <!-- Blog Post 2 -->
+                    <div class="slide">
+                        <div class="blog-post">
+                            <h2>Finding Home as Filipino Immigrants in Hawai‘i</h2>
+                            <span class="date">April 19, 2025</span>
+                            <p>A reflective look into our journey from the Philippines to Hawai‘i—navigating a new culture, learning a new language, and discovering our place in a diverse society. We share our experiences of both struggle and growth, and how these moments shaped who we are today.</p>
+                            <a href="#" class="read-more">Read More</a>
+                        </div>
+                    </div>
+                    <!-- Blog Post 3 -->
+                    <div class="slide">
+                        <div class="blog-post">
+                            <h2>From Balikbayan Boxes to Belonging: Our Filipino Journey in Hawai‘i</h2>
+                            <span class="date">April 17, 2025</span>
+                            <p>With honesty and heart, we talk about our evolving identity as young Filipino immigrants growing up in Hawai‘i. From language barriers to family expectations, we explore what it really means to belong in two worlds—and how we’re learning to embrace both.</p>
+                            <a href="#" class="read-more">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="navigation">
+                <button class="nav-btn prev">←</button>
+                <button class="nav-btn next">→</button>
+            </div>
+            
+            <div class="indicators">
+                <div class="indicator active" data-index="0"></div>
+                <div class="indicator" data-index="1"></div>
+                <div class="indicator" data-index="2"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Carousel functionality
+            const slides = document.querySelector('.slides');
+            const prevBtn = document.querySelector('.prev');
+            const nextBtn = document.querySelector('.next');
+            const indicators = document.querySelectorAll('.indicator');
+            const slideCount = document.querySelectorAll('.slide').length;
+            let currentIndex = 0;
+            
+            // Function to update slide position
+            function updateSlide() {
+                slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+                
+                // Update indicators
+                indicators.forEach((indicator, index) => {
+                    if (index === currentIndex) {
+                        indicator.classList.add('active');
+                    } else {
+                        indicator.classList.remove('active');
+                    }
+                });
+            }
+            
+            // Event listeners for navigation buttons
+            prevBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex - 1 + slideCount) % slideCount;
+                updateSlide();
+            });
+            
+            nextBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex + 1) % slideCount;
+                updateSlide();
+            });
+            
+            // Event listeners for indicators
+            indicators.forEach(indicator => {
+                indicator.addEventListener('click', () => {
+                    currentIndex = parseInt(indicator.dataset.index);
+                    updateSlide();
+                });
+            });
+            
+            // Auto-play functionality (optional)
+            let autoplayInterval = setInterval(() => {
+                currentIndex = (currentIndex + 1) % slideCount;
+                updateSlide();
+            }, 5000);
+            
+            // Pause autoplay on hover
+            const carousel = document.querySelector('.carousel');
+            carousel.addEventListener('mouseenter', () => {
+                clearInterval(autoplayInterval);
+            });
+            
+            carousel.addEventListener('mouseleave', () => {
+                autoplayInterval = setInterval(() => {
+                    currentIndex = (currentIndex + 1) % slideCount;
+                    updateSlide();
+                }, 5000);
+            });
+        });
+    </script>
+</body>
+</html>
